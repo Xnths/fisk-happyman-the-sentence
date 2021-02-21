@@ -17,8 +17,15 @@
         <img src="img/logo.png" alt="Fisk's logo" class='logo'>
     </header>
     <main>
-        <section class="container" id='display-screen'>
-
+        <section class="container container-display-screen" id='display-screen'>
+            <div class="container container-game-main">
+                <div class="container container-canvas">
+                    <canvas id="hangman" width='300px' height='350px'></canvas>
+                </div>
+                <div class="container container-missing-word">
+                    <p id="p-sentence">Do you like <strong id="s-missing-word">PAROT</strong>?</p>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
@@ -26,5 +33,10 @@
         </p>
     </footer>
 </body>
+<script src='./app/graphics/Hang.js'>
+</script>
+<script>
+    let hang = new Hang();
+</script>
 
 </html>

@@ -10,4 +10,6 @@
     --background-contrast: rgba(9, 8, 8, 0.88);
     --turn-border: 2px solid red;
     --font-default: 'Roboto', sans-serif;
+
+    --margin: 3%;
 }

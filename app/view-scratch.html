@@ -1,7 +1,22 @@
-<div class="container container-main-screen">
-    <h1>Hangman, the sentence.</h1>
+<div class="container container-game-settings">
+    <div class="container container-instructions">
+        <h2>Define your game settings</h2>
+        <p>Use <strong>*</strong> to identify the missing word, and
+            <strong>ENTER</strong> to start a new sentence.
+        </p>
+    </div>
+    <fieldset class="container" id="frm-game-settings">
+        <textarea id="txt-game-settings" placeholder="Come on, don't be shy. Write sentences right here." autofocus
+            rows="10"></textarea>
+        <button id="btn-load-game">Save</button>
+    </fieldset>
 </div>
-<div class="container container-game-options">
-    <button id="btn-new-game">New Game</button>
-    <button id="btn-load-game">Load Game</button>
+
+<div class="container container-game-main">
+    <div class="container container-canvas">
+        <canvas id="hangman" width='300px' height='350px'></canvas>
+    </div>
+    <div class="container container-missing-word">
+        <p id="p-sentence">Do you like <strong id="s-missing-word">PAROT</strong>?</p>
+    </div>
 </div>
