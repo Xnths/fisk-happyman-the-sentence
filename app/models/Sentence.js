@@ -1,21 +1,26 @@
 class Sentence {
     constructor(line) {
-        this._sentence = _extractSetence(line);
-        this._missingWord = _extractMissingWord(line);
+        let sentenceParts = line.split('*');
+        //There are always 3 parts of the sentence
+        //First, the beginning of the setence.
+        //Second, the missing word
+        //Then, the rest of the sentence.
+        this._sentenceBeginning = sentenceParts[0];
+        this._missingWord = sentenceParts[1];
+        this._sentenceContinuation = sentenceParts[2];
 
         Object.freeze();
     }
 
-    _extractSentence() {
-
-        return
-    }
-
-    get sentence() {
-        return this._sentence;
+    get sentenceBeginning() {
+        return this._sentenceBeginning;
     }
 
     get missingWord() {
         return this._missingWord;
+    }
+
+    get sentenceContinuation() {
+        return this._sentenceContinuation;
     }
 }
