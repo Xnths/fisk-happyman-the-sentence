@@ -2,7 +2,6 @@ class SentenceList {
     constructor(text) {
         this._sentenceList = [];
         this._buildSetence(text);
-        console.log(this._sentenceList[0]);
     }
 
     _buildSetence(text) {
@@ -29,4 +28,7 @@ class SentenceList {
         return shuffledList;
     }
 
+    get sentences() {
+        return [].concat(this._sentenceList);
+    }
 }
