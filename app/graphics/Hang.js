@@ -6,7 +6,10 @@ class Hang {
         this._ctx.fillStyle = 'white';
         this._ctx.strokeStyle = 'white';
         this._ctx.lineWidth = 5;
+    }
 
+
+    draw() {
         this._init();
     }
 
@@ -18,7 +21,7 @@ class Hang {
         this._ctx.stroke();
     }
 
-    rope() {
+    _rope() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 0);
         this._ctx.lineTo(150, 50);
@@ -26,14 +29,14 @@ class Hang {
         this._ctx.stroke();
     }
 
-    head() {
+    _head() {
         this._ctx.beginPath();
         this._ctx.arc(150, 100, 50, 0, 2 * Math.PI);
         this._ctx.closePath();
         this._ctx.stroke();
     }
 
-    body() {
+    _body() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 150);
         this._ctx.lineTo(150, 275);
@@ -42,7 +45,7 @@ class Hang {
     }
 
     //in user's perspective
-    leftHand() {
+    _leftHand() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 175);
         this._ctx.lineTo(100, 200);
@@ -50,7 +53,7 @@ class Hang {
         this._ctx.stroke();
     }
 
-    rightHand() {
+    _rightHand() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 175);
         this._ctx.lineTo(200, 200);
@@ -58,7 +61,7 @@ class Hang {
         this._ctx.stroke();
     }
 
-    leftLeg() {
+    _leftLeg() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 275);
         this._ctx.lineTo(100, 325);
@@ -66,7 +69,7 @@ class Hang {
         this._ctx.stroke();
     }
 
-    rightLeg() {
+    _rightLeg() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 275);
         this._ctx.lineTo(200, 325);
@@ -74,7 +77,7 @@ class Hang {
         this._ctx.stroke();
     }
 
-    throttle() {
+    _throttle() {
         this._ctx.beginPath();
         this._ctx.moveTo(50, 162.5);
         this._ctx.lineTo(250, 162.5);

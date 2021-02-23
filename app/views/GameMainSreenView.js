@@ -1,6 +1,8 @@
 class GameMainScreenView extends View {
     constructor(element) {
         super(element);
+
+        this._updates = 0
     }
 
     _templete(model) {

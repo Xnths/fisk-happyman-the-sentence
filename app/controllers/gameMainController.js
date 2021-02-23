@@ -5,9 +5,22 @@ class gameMainController {
 
         this._attempt = 0;
         this._sentenceIndex = 0;
-        this._gameIsInit = false;
+        this._gameInputOn = false;
 
         this._startListening();
+    }
+
+    _checkWin(sentence) {
+        let underlines = [];
+
+        for (let i = 0; i < sentence.missingWord.length; i++) {
+            if (sentence.missingWord[i] == "_") underlines.push("_");
+        }
+        console.log(underlines)
+        if (underlines == 0) {
+            this._sentenceIndex++;
+            this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex])
+        };
     }
 
     _checkLetter(key) {
@@ -23,21 +36,21 @@ class gameMainController {
         console.log(sentence)
         if (letterPosition.length > 0) this._gameMainScreenView.update(sentence);
 
-        console.log(word, letterPosition)
+        console.log(word, letterPosition);
+        this._checkWin(sentence);
     }
 
     _startListening() {
         document.addEventListener('keydown', e => {
-            if (this._gameIsInit) this._checkLetter(e.key);
+            if (this._gameInputOn) this._checkLetter(e.key);
         })
     }
 
     init(sentenceList) {
-        this._gameIsInit = true;
+        this._gameInputOn = true;
         this._sentenceList = sentenceList.sentences;
         console.log(this._sentenceList);
         this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex]);
-        let hang = new Hang();
     }
 
 }
