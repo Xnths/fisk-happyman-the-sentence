@@ -13,6 +13,10 @@ class Sentence {
         Object.freeze();
     }
 
+    reviewLetter(letter, position) {
+        this._missingWord[position] = letter;
+    }
+
     _hideGuessingWord() {
         let hiddenWord = [];
 
@@ -24,6 +28,10 @@ class Sentence {
 
     get sentenceBeginning() {
         return this._sentenceBeginning;
+    }
+
+    get guessingWord() {
+        return this._guessingWord;
     }
 
     get missingWord() {

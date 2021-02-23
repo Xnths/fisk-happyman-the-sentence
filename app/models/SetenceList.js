@@ -9,7 +9,7 @@ class SentenceList {
 
         let sentences = sentencesFactory.create(text);
 
-        this._sentenceList = this._shuffle(sentences);
+        this._sentenceList = sentences;
     }
 
     //Fisher-Yates shuffle algorithm
