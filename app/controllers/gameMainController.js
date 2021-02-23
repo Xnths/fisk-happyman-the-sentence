@@ -21,8 +21,7 @@ class gameMainController {
 
         letterPosition.forEach(position => sentence.reviewLetter(key, position));
         console.log(sentence)
-        if (letterPosition > 0)
-            this._gameMainScreenView.update(sentence);
+        if (letterPosition.length > 0) this._gameMainScreenView.update(sentence);
 
         console.log(word, letterPosition)
     }
