@@ -2,6 +2,7 @@ class SentenceList {
     constructor(text) {
         this._sentenceList = [];
         this._buildSetence(text);
+        console.log(this._sentenceList[0]);
     }
 
     _buildSetence(text) {
@@ -9,11 +10,11 @@ class SentenceList {
 
         let sentences = sentencesFactory.create(text);
 
-        this._sentenceList = shuffle(sentences);
+        this._sentenceList = this._shuffle(sentences);
     }
 
     //Fisher-Yates shuffle algorithm
-    shuffle(array) {
+    _shuffle(array) {
         let currentIndex = array.length, buffer, randomIndex;
         let shuffledList = [].concat(array);
 

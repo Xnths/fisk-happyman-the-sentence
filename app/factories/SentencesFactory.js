@@ -6,10 +6,12 @@ class SentencesFactory {
     create(text) {
         let lines = text.split('\n');
 
-        for (i = 0; i < lines.length; i++) {
+        for (let i = 0; i < lines.length; i++) {
             if (lines[i] == "") return;
 
-            this._sentences.push(new Sentence(lines[i]));
+            let sentence = new Sentence(lines[i]);
+
+            this._sentences.push(sentence);
         }
 
         return this._sentences;

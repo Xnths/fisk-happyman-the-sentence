@@ -28,7 +28,7 @@
                 <fieldset id="frm-game-settings">
                     <textarea id="txt-game-settings" placeholder="Come on, don't be shy. Write sentences right here."
                         autofocus rows="10"></textarea>
-                    <button id="btn-load-game">Save</button>
+                    <button id="btn-start-game" onclick="gameController.start()">Start</button>
                 </fieldset>
             </div>
         </section>
@@ -38,5 +38,14 @@
         </p>
     </footer>
 </body>
+<script src='./app/controllers/gameSettingsController.js'></script>
+<script src='./app/controllers/gameMainController.js'></script>
+<script src='./app/factories/SentencesFactory.js'></script>
+<script src='./app/graphics/Hang.js'></script>
+<script src='./app/models/Sentence.js'></script>
+<script src='./app/models/SetenceList.js'></script>
+<script>
+    let gameController = new gameSettingsController();
+</script>
 
 </html>
