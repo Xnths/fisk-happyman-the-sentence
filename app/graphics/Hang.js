@@ -13,13 +13,12 @@ class Hang {
 
     draw(drawNumber) {
         if (drawNumber.includes(0)) this.head();
+        if (drawNumber.includes(1)) this.smile();
         if (drawNumber.includes(1)) this.body();
         if (drawNumber.includes(2)) this.leftHand();
         if (drawNumber.includes(3)) this.rightHand();
         if (drawNumber.includes(4)) this.leftLeg();
         if (drawNumber.includes(5)) this.rightLeg();
-        if (drawNumber.includes(6)) this.rope();
-        if (drawNumber.includes(7)) this.throttle();
     }
 
     clear() {
@@ -28,8 +27,8 @@ class Hang {
 
     init() {
         this._ctx.beginPath();
-        this._ctx.moveTo(0, 2.5);
-        this._ctx.lineTo(300, 2.5);
+        this._ctx.moveTo(0, (this._canvas.height - 20));
+        this._ctx.lineTo(this._canvas.width, (this._canvas.height - 20));
         this._ctx.closePath();
         this._ctx.stroke();
     }
@@ -46,6 +45,12 @@ class Hang {
         this._ctx.beginPath();
         this._ctx.arc(150, 100, 50, 0, 2 * Math.PI);
         this._ctx.closePath();
+        this._ctx.stroke();
+    }
+
+    smile() {
+        this._ctx.beginPath();
+        this._ctx.arc(150, 100, 25, (8 * Math.PI) / 4, (Math.PI));
         this._ctx.stroke();
     }
 
