@@ -3,11 +3,11 @@ class View {
         this._element = element;
     }
 
-    _templete(model) {
+    _template(model) {
         throw new Error('There is no implementation of the template.');
     }
 
     update(model) {
-        this._element.innerHTML = this._templete(model);
+        this._element.innerHTML = this._template(model);
     }
 }

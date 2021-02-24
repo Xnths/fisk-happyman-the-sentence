@@ -3,8 +3,7 @@ class gameSettingsController {
         let $ = document.getElementById.bind(document);
 
         this._gameSetting = $('txt-game-settings');
-        this._displayScreen = $('display-screen');
-        this._gameMainController = new gameMainController(this._displayScreen);
+        this._gameMainController = new gameMainController();
     }
 
     start() {

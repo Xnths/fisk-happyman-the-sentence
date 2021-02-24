@@ -17,6 +17,9 @@
         <img src="img/logo.png" alt="Fisk's logo" class='logo'>
     </header>
     <main>
+        <div class="container container-canvas">
+            <canvas id="hangman" width='300px' height='350px'></canvas>
+        </div>
         <section class="container container-display-screen" id='display-screen'>
             <div class="container container-game-settings">
                 <div class="container-instructions">
@@ -32,6 +35,9 @@
                 </fieldset>
             </div>
         </section>
+        <div class="container container-letters-attempted" id="letters-display">
+
+        </div>
     </main>
     <footer>
         <p class="copyright">© Team Fisk SBS - 2021 | Developed by <a href="https://www.github.com/xnths">Castilho</a>
@@ -46,6 +52,7 @@
 <script src='./app/models/SetenceList.js'></script>
 <script src='./app/views/View.js'></script>
 <script src='./app/views/GameMainSreenView.js'></script>
+<script src='./app/views/LettersAttemptedView.js'></script>
 <script>
     let gameController = new gameSettingsController();
 </script>

@@ -1,6 +1,5 @@
 class Hang {
-    constructor() {
-        const canvas = document.getElementById('hangman');
+    constructor(canvas) {
         this._ctx = canvas.getContext('2d');
 
         this._ctx.fillStyle = 'white';
@@ -8,12 +7,7 @@ class Hang {
         this._ctx.lineWidth = 5;
     }
 
-
-    draw() {
-        this._init();
-    }
-
-    _init() {
+    init() {
         this._ctx.beginPath();
         this._ctx.moveTo(0, 2.5);
         this._ctx.lineTo(300, 2.5);
@@ -21,7 +15,7 @@ class Hang {
         this._ctx.stroke();
     }
 
-    _rope() {
+    rope() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 0);
         this._ctx.lineTo(150, 50);
@@ -29,14 +23,14 @@ class Hang {
         this._ctx.stroke();
     }
 
-    _head() {
+    head() {
         this._ctx.beginPath();
         this._ctx.arc(150, 100, 50, 0, 2 * Math.PI);
         this._ctx.closePath();
         this._ctx.stroke();
     }
 
-    _body() {
+    body() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 150);
         this._ctx.lineTo(150, 275);
@@ -45,7 +39,7 @@ class Hang {
     }
 
     //in user's perspective
-    _leftHand() {
+    leftHand() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 175);
         this._ctx.lineTo(100, 200);
@@ -53,7 +47,7 @@ class Hang {
         this._ctx.stroke();
     }
 
-    _rightHand() {
+    rightHand() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 175);
         this._ctx.lineTo(200, 200);
@@ -61,7 +55,7 @@ class Hang {
         this._ctx.stroke();
     }
 
-    _leftLeg() {
+    leftLeg() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 275);
         this._ctx.lineTo(100, 325);
@@ -69,7 +63,7 @@ class Hang {
         this._ctx.stroke();
     }
 
-    _rightLeg() {
+    rightLeg() {
         this._ctx.beginPath();
         this._ctx.moveTo(150, 275);
         this._ctx.lineTo(200, 325);
@@ -77,7 +71,7 @@ class Hang {
         this._ctx.stroke();
     }
 
-    _throttle() {
+    throttle() {
         this._ctx.beginPath();
         this._ctx.moveTo(50, 162.5);
         this._ctx.lineTo(250, 162.5);

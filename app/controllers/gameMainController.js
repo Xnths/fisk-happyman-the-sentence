@@ -1,9 +1,17 @@
 class gameMainController {
-    constructor(displayScreen) {
-        this._sentenceList = [];
-        this._gameMainScreenView = new GameMainScreenView(displayScreen);
+    constructor() {
+        let $ = document.getElementById.bind(document);
 
-        this._attempt = 0;
+        this._displayScreen = $('display-screen');
+        this._lettersDisplay = $('letters-display');
+
+        this._sentenceList = [];
+
+        this._gameMainScreenView = new GameMainScreenView(this._displayScreen);
+        this._lettersAttemptedView = new LettersAttempedView(this._lettersDisplay);
+
+        this._lettersAttemped = [];
+
         this._sentenceIndex = 0;
         this._gameInputOn = false;
 
@@ -19,6 +27,8 @@ class gameMainController {
         console.log(underlines)
         if (underlines == 0) {
             this._sentenceIndex++;
+            this._lettersAttemped = [];
+            this._lettersAttemptedView.update(this._lettersAttemped);
             this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex])
         };
     }
@@ -27,6 +37,13 @@ class gameMainController {
         let sentence = this._sentenceList[this._sentenceIndex];
         let word = sentence.guessingWord;
         let letterPosition = [];
+
+        if (!this._lettersAttemped.includes(key)) {
+            this._lettersAttemped.push(key);
+            this._lettersAttemptedView.update(this._lettersAttemped);
+        };
+        console.log(this._lettersAttemped)
+
 
         for (let i = 0; i < word.length; i++) {
             if (word[i] == key) letterPosition.push(i);
@@ -37,6 +54,7 @@ class gameMainController {
         if (letterPosition.length > 0) this._gameMainScreenView.update(sentence);
 
         console.log(word, letterPosition);
+
         this._checkWin(sentence);
     }
 
