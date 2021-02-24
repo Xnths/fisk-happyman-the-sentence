@@ -55,6 +55,12 @@ class gameMainController {
         if (!this._lettersAttemped.includes(key)) {
             this._lettersAttemped.push(key);
             this._lettersAttemptedView.update(this._lettersAttemped);
+
+            attemptsWrong.push(this._attemptsWrongCounter);
+            this._attemptsWrong = attemptsWrong;
+            console.log(this._attemptsWrongCounter);
+            this._attemptsWrongCounter++;
+            this._hang.draw(this._attemptsWrong);
         };
 
         for (let i = 0; i < word.length; i++) {
@@ -65,13 +71,6 @@ class gameMainController {
         if (letterPosition.length > 0) this._gameMainScreenView.update(sentence);
 
         this._checkWin(sentence);
-        if (!wordLetters.includes(key) || !this._lettersAttemped.includes(key)) {
-            attemptsWrong.push(this._attemptsWrongCounter);
-            this._attemptsWrong = attemptsWrong;
-            console.log(this._attemptsWrongCounter);
-            this._attemptsWrongCounter++;
-            this._hang.draw(this._attemptsWrong);
-        }
     }
 
     _startListening() {
