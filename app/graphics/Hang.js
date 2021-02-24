@@ -5,9 +5,11 @@ class Hang {
         this._ctx.fillStyle = 'white';
         this._ctx.strokeStyle = 'white';
         this._ctx.lineWidth = 5;
+
+        this._init();
     }
 
-    init() {
+    _init() {
         this._ctx.beginPath();
         this._ctx.moveTo(0, 2.5);
         this._ctx.lineTo(300, 2.5);

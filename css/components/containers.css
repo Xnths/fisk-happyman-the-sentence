@@ -18,7 +18,10 @@ fieldset{
 }
 
 .container-canvas{
-    display: none;
     width: 300px;
     height: 300px;
+}
+
+.container-invisible{
+    display: none;
 }

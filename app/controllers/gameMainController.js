@@ -3,7 +3,11 @@ class gameMainController {
         let $ = document.getElementById.bind(document);
 
         this._displayScreen = $('display-screen');
+        this._displayCanvas = $('display-canvas');
         this._lettersDisplay = $('letters-display');
+        this._canvas = $('hangman');
+
+        let _hang = new Hang(this._canvas);
 
         this._sentenceList = [];
 
@@ -12,6 +16,7 @@ class gameMainController {
 
         this._lettersAttemped = [];
 
+        this._attempts = 0;
         this._sentenceIndex = 0;
         this._gameInputOn = false;
 
@@ -42,7 +47,6 @@ class gameMainController {
             this._lettersAttemped.push(key);
             this._lettersAttemptedView.update(this._lettersAttemped);
         };
-        console.log(this._lettersAttemped)
 
 
         for (let i = 0; i < word.length; i++) {
@@ -67,7 +71,8 @@ class gameMainController {
     init(sentenceList) {
         this._gameInputOn = true;
         this._sentenceList = sentenceList.sentences;
-        console.log(this._sentenceList);
+        this._displayCanvas.classList.remove('container-invisible');
+        this._lettersDisplay.classList.remove('container-invisible');
         this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex]);
     }
 

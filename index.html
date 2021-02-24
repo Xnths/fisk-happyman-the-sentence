@@ -17,10 +17,10 @@
         <img src="img/logo.png" alt="Fisk's logo" class='logo'>
     </header>
     <main>
-        <div class="container container-canvas">
+        <div class="container container-canvas container-invisible" id='display-canvas'>
             <canvas id="hangman" width='300px' height='350px'></canvas>
         </div>
-        <section class="container container-display-screen" id='display-screen'>
+        <section class="container" id='display-screen'>
             <div class="container container-game-settings">
                 <div class="container-instructions">
                     <h2>Define your game settings</h2>
@@ -35,7 +35,7 @@
                 </fieldset>
             </div>
         </section>
-        <div class="container container-letters-attempted" id="letters-display">
+        <div class="container container-letters-attempted container-invisible" id="letters-display">
 
         </div>
     </main>
