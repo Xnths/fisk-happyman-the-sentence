@@ -1,15 +1,32 @@
 class Hang {
-    constructor(canvas) {
-        this._ctx = canvas.getContext('2d');
+    constructor(canvas, target) {
+        this._canvas = document.getElementById('hangman');
+        this._ctx = this._canvas.getContext('2d');
 
+        this._drawOrder = [this.init, this.head, this.body]
         this._ctx.fillStyle = 'white';
         this._ctx.strokeStyle = 'white';
         this._ctx.lineWidth = 5;
 
-        this._init();
+        this.init();
     }
 
-    _init() {
+    draw(drawNumber) {
+        if (drawNumber.includes(0)) this.head();
+        if (drawNumber.includes(1)) this.body();
+        if (drawNumber.includes(2)) this.leftHand();
+        if (drawNumber.includes(3)) this.rightHand();
+        if (drawNumber.includes(4)) this.leftLeg();
+        if (drawNumber.includes(5)) this.rightLeg();
+        if (drawNumber.includes(6)) this.rope();
+        if (drawNumber.includes(7)) this.throttle();
+    }
+
+    clear() {
+        this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
+    }
+
+    init() {
         this._ctx.beginPath();
         this._ctx.moveTo(0, 2.5);
         this._ctx.lineTo(300, 2.5);

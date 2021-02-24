@@ -7,16 +7,18 @@ class gameMainController {
         this._lettersDisplay = $('letters-display');
         this._canvas = $('hangman');
 
-        let _hang = new Hang(this._canvas);
+        this._hang = new Hang(this._canvas);
 
         this._sentenceList = [];
+        this._hangState = [];
 
         this._gameMainScreenView = new GameMainScreenView(this._displayScreen);
         this._lettersAttemptedView = new LettersAttempedView(this._lettersDisplay);
 
         this._lettersAttemped = [];
 
-        this._attempts = 0;
+        this._attemptsWrongCounter = 0;
+        this._attemptsWrong = [];
         this._sentenceIndex = 0;
         this._gameInputOn = false;
 
@@ -29,37 +31,47 @@ class gameMainController {
         for (let i = 0; i < sentence.missingWord.length; i++) {
             if (sentence.missingWord[i] == "_") underlines.push("_");
         }
-        console.log(underlines)
         if (underlines == 0) {
             this._sentenceIndex++;
             this._lettersAttemped = [];
+            this._attemptsWrong = [];
+            this._attemptsWrongCounter = 0;
+            this._hang.clear();
             this._lettersAttemptedView.update(this._lettersAttemped);
             this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex])
+            return
         };
     }
 
     _checkLetter(key) {
         let sentence = this._sentenceList[this._sentenceIndex];
         let word = sentence.guessingWord;
+        let wordLetters = word.split("");
         let letterPosition = [];
+
+        let attemptsWrong = [];
+
 
         if (!this._lettersAttemped.includes(key)) {
             this._lettersAttemped.push(key);
             this._lettersAttemptedView.update(this._lettersAttemped);
         };
 
-
         for (let i = 0; i < word.length; i++) {
             if (word[i] == key) letterPosition.push(i);
         }
 
-        letterPosition.forEach(position => sentence.reviewLetter(key, position));
-        console.log(sentence)
+        letterPosition.forEach(position => sentence.reviewLetter(key, position))
         if (letterPosition.length > 0) this._gameMainScreenView.update(sentence);
 
-        console.log(word, letterPosition);
-
         this._checkWin(sentence);
+        if (!wordLetters.includes(key) || !this._lettersAttemped.includes(key)) {
+            attemptsWrong.push(this._attemptsWrongCounter);
+            this._attemptsWrong = attemptsWrong;
+            console.log(this._attemptsWrongCounter);
+            this._attemptsWrongCounter++;
+            this._hang.draw(this._attemptsWrong);
+        }
     }
 
     _startListening() {
