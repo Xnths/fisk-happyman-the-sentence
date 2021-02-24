@@ -56,11 +56,13 @@ class gameMainController {
             this._lettersAttemped.push(key);
             this._lettersAttemptedView.update(this._lettersAttemped);
 
-            attemptsWrong.push(this._attemptsWrongCounter);
-            this._attemptsWrong = attemptsWrong;
-            console.log(this._attemptsWrongCounter);
-            this._attemptsWrongCounter++;
-            this._hang.draw(this._attemptsWrong);
+            if (!wordLetters.includes(key)) {
+                attemptsWrong.push(this._attemptsWrongCounter);
+                this._attemptsWrong = attemptsWrong;
+                console.log(this._attemptsWrongCounter);
+                this._attemptsWrongCounter++;
+                this._hang.draw(this._attemptsWrong);
+            }
         };
 
         for (let i = 0; i < word.length; i++) {
