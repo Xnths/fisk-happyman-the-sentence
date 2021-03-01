@@ -4,10 +4,6 @@ class LettersAttempedView extends View {
     }
 
     _template(model) {
-        return `
-            ${model.map(letter =>
-            `<span><strong>${letter}<strong></span>`
-        ).join(" ")}
-        `
+        return `<spam>${model.map(letter => `<strong>${letter}<strong>`).join(" ")}</spam>`
     }
 }

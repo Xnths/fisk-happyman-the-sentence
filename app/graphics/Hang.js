@@ -11,14 +11,15 @@ class Hang {
         this.init();
     }
 
-    draw(drawNumber) {
+    draw(drawNumber = []) {
+        this.init();
         if (drawNumber.includes(0)) this.head();
-        if (drawNumber.includes(1)) this.smile();
-        if (drawNumber.includes(2)) this.body();
-        if (drawNumber.includes(3)) this.leftHand();
-        if (drawNumber.includes(4)) this.rightHand();
-        if (drawNumber.includes(5)) this.leftLeg();
-        if (drawNumber.includes(6)) this.rightLeg();
+        if (drawNumber.includes(1)) this.body();
+        if (drawNumber.includes(2)) this.leftHand();
+        if (drawNumber.includes(3)) this.rightHand();
+        if (drawNumber.includes(4)) this.leftLeg();
+        if (drawNumber.includes(5)) this.rightLeg();
+        if (drawNumber.includes(6)) this.smile();
     }
 
     clear() {

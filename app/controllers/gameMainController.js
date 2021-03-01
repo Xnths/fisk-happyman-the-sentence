@@ -39,6 +39,7 @@ class gameMainController {
             this._hang.clear();
             this._lettersAttemptedView.update(this._lettersAttemped);
             this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex])
+            this._hang.draw();
             return
         };
     }
