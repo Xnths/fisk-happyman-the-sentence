@@ -28,3 +28,14 @@ button:active{
     margin: 0.8em;
     width: auto;
 }
+
+#next:disabled{
+    background: grey;
+    opacity: 0.5;
+    border-bottom: 2px solid darkgrey;
+}
+
+#next{
+    font-size: 0.8em;
+    width: auto;
+}

@@ -5,6 +5,7 @@ class gameMainController {
         this._displayScreen = $('display-screen');
         this._displayCanvas = $('display-canvas');
         this._lettersDisplay = $('letters-display');
+        this._buttonNext = $('next');
         this._canvas = $('hangman');
 
         this._hang = new Hang(this._canvas);
@@ -25,6 +26,15 @@ class gameMainController {
         this._startListening();
     }
 
+    next() {
+        this._hang.clear();
+        this._sentenceIndex++;
+        this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex])
+        this._buttonNext.disabled = true;
+        this._buttonNext.blur();
+        this._hang.draw();
+    }
+
     _checkWin(sentence) {
         let underlines = [];
 
@@ -32,14 +42,14 @@ class gameMainController {
             if (sentence.missingWord[i] == "_") underlines.push("_");
         }
         if (underlines == 0) {
-            this._sentenceIndex++;
             this._lettersAttemped = [];
             this._attemptsWrong = [];
             this._attemptsWrongCounter = 0;
-            this._hang.clear();
             this._lettersAttemptedView.update(this._lettersAttemped);
             this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex])
             this._hang.draw();
+            this._buttonNext.focus();
+            this._buttonNext.disabled = false;
             return
         };
     }
@@ -53,14 +63,13 @@ class gameMainController {
         let attemptsWrong = [];
 
 
-        if (!this._lettersAttemped.includes(key)) {
+        if (!this._lettersAttemped.includes(key) && this._gameInputOn) {
             this._lettersAttemped.push(key);
             this._lettersAttemptedView.update(this._lettersAttemped);
 
             if (!wordLetters.includes(key)) {
                 attemptsWrong.push(this._attemptsWrongCounter);
                 this._attemptsWrong = attemptsWrong;
-                console.log(this._attemptsWrongCounter);
                 this._attemptsWrongCounter++;
                 this._hang.draw(this._attemptsWrong);
             }
@@ -73,6 +82,11 @@ class gameMainController {
         letterPosition.forEach(position => sentence.reviewLetter(key, position))
         if (letterPosition.length > 0) this._gameMainScreenView.update(sentence);
 
+
+        if (this._attemptsWrongCounter > 6) {
+            this._buttonNext.disabled = false;
+            sentence.reviewWord();
+        };
         this._checkWin(sentence);
     }
 
@@ -87,6 +101,8 @@ class gameMainController {
         this._sentenceList = sentenceList.sentences;
         this._displayCanvas.classList.remove('container-invisible');
         this._lettersDisplay.classList.remove('container-invisible');
+        this._buttonNext.classList.remove('container-invisible');
+        this._buttonNext.disabled = true;
         this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex]);
     }
 

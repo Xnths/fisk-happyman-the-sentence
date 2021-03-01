@@ -3,7 +3,6 @@ class Hang {
         this._canvas = document.getElementById('hangman');
         this._ctx = this._canvas.getContext('2d');
 
-        this._drawOrder = [this.init, this.head, this.body]
         this._ctx.fillStyle = 'white';
         this._ctx.strokeStyle = 'white';
         this._ctx.lineWidth = 5;

@@ -6,6 +6,10 @@ class gameSettingsController {
         this._gameMainController = new gameMainController();
     }
 
+    next() {
+        this._gameMainController.next();
+    }
+
     start() {
         let sentenceList = new SentenceList(this._gameSetting.value);
 

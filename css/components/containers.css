@@ -26,8 +26,6 @@ fieldset{
     display: none;
 }
 
-.container-feedback{
-    width: 2em;
-    height: 2em;
-    background: grey;
+.container-letters-attempted{
+    font-size: 0.7em;
 }
