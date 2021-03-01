@@ -17,6 +17,12 @@ class Sentence {
         this._missingWord[position] = letter;
     }
 
+    reviewWord() {
+        for (let i = 0; i < this._missingWord.length; i++) {
+            this._missingWord[i] = this._guessingWord[i];
+        }
+    }
+
     _hideGuessingWord() {
         let hiddenWord = [];
 

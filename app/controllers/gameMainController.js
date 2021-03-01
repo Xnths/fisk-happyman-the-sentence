@@ -5,6 +5,7 @@ class gameMainController {
         this._displayScreen = $('display-screen');
         this._displayCanvas = $('display-canvas');
         this._lettersDisplay = $('letters-display');
+        this._buttonNext = $('next');
         this._canvas = $('hangman');
 
         this._hang = new Hang(this._canvas);
@@ -32,7 +33,6 @@ class gameMainController {
             if (sentence.missingWord[i] == "_") underlines.push("_");
         }
         if (underlines == 0) {
-            this._sentenceIndex++;
             this._lettersAttemped = [];
             this._attemptsWrong = [];
             this._attemptsWrongCounter = 0;
@@ -40,6 +40,7 @@ class gameMainController {
             this._lettersAttemptedView.update(this._lettersAttemped);
             this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex])
             this._hang.draw();
+            this._buttonNext.disabled = false;
             return
         };
     }
@@ -60,7 +61,7 @@ class gameMainController {
             if (!wordLetters.includes(key)) {
                 attemptsWrong.push(this._attemptsWrongCounter);
                 this._attemptsWrong = attemptsWrong;
-                console.log(this._attemptsWrongCounter);
+                if (this._attemptsWrongCounter > 7) setence.reviewWord();
                 this._attemptsWrongCounter++;
                 this._hang.draw(this._attemptsWrong);
             }
@@ -87,6 +88,7 @@ class gameMainController {
         this._sentenceList = sentenceList.sentences;
         this._displayCanvas.classList.remove('container-invisible');
         this._lettersDisplay.classList.remove('container-invisible');
+        this._buttonNext.classList.remove('container-invisible');
         this._gameMainScreenView.update(this._sentenceList[this._sentenceIndex]);
     }
 
